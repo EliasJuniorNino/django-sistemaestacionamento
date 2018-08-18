@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block main %}
+    <ul>
+        {% for mensalista in mensalistas %}
+        <li>
+            <a href="{% url 'core_mensalista_update' mensalista.id %}">
+                {{ mensalista }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <form action="{% url 'core_mensalista_novo' %}" method="POST" >
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Cadastrar</button>
+    </form>
+{% endblock %}

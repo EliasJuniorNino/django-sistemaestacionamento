@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block main %}
+    <ul>
+        {% for movrot in MovRotativos %}
+        <li>
+            <a href="{% url 'core_movrotativo_update' movrot.id %}">
+                {{ movrot.checkin }} - {{ movrot.checkout }} - {{ movrot.veiculo }} - {{ movrot.pago }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'core_mov_rotativo_novo' %}" method="POST" >
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Cadastrar</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block main %} 
+    <ul>
+        {% for movmensalista in movmensalistas %}
+        <li>
+            <a href="{% url 'core_movmensalista_update' movmensalista.id %}">
+                {{ movmensalista.mensalista }} - {{ movmensalista.dt_pgto }} - {{ movmensalista.total }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'core_mov_mensalista_novo' %}" method="POST" >
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Cadastrar</button>
+    </form>
+{% endblock %}
